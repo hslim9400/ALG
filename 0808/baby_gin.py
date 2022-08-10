@@ -3,7 +3,7 @@ T = int(input())
 for test_case in range(1, T+1):
     num = int(input())
     nums = []
-    for _ in range(6):  # while문 사용시 10의 배수가 들어오면 마지막 0을 받지 못한다?
+    for _ in range(6):
         nums = [num % 10] + nums  # 10으로 나눈 나머지인 1의자리 수를 저장
         num = num//10  # 저장한 1의 자리를 제외한 나머지 숫자로 다시 실행
 
