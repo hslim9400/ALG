@@ -18,12 +18,17 @@ for test_case in range(1, 11):
         stack.append(start)
     done = []
     while stack:
-        current = stack.pop(0)
+        current = stack.pop()
         if current in done:
             continue
         done.append(current)
         for target in range(1, V+1):
             if adj[current][target] and target not in done:
-                stack.append(target)
+                for prev in range(1, V+1):
+                    if adj[prev][target]:
+                        if prev not in done:
+                            break
+                else:
+                    stack.append(target)
 
     print(f'#{test_case}', *done)
