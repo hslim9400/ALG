@@ -1,5 +1,6 @@
 T = int(input())
 for test_case in range(1, T+1):
+    tc = int(input())
     N, M = map(int, input().split())
     board = []
     for _ in range(N):
@@ -12,4 +13,5 @@ for test_case in range(1, T+1):
                 ans = board[i][j:j+M]
             if trans_board[i][j:j+M] == trans_board[i][j:j+M][::-1]:
                 ans = trans_board[i][j:j+M]
+    ans = ''.join(ans)
     print(f'#{test_case} {ans}')
