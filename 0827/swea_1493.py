@@ -1,7 +1,7 @@
 def find_coord(n):
     if n == 1:
         return 1, 1
-    group = int((2*n+0.2501)**0.5+0.5)
+    group = int((2*n+0.25)**0.5+0.499)
     group_last = sum(range(group+1))
     which = group_last - n
     return group - which, 1 + which
@@ -27,3 +27,4 @@ for test_case in range(1, T+1):
     step_2 = find_num(step_1)
 
     print(f'#{test_case} {step_2}')
+
