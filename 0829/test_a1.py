@@ -1,10 +1,12 @@
 def connect_power(r, c, powered, used):
     global max_powered, min_used
     if r == N:
-        if powered >= max_powered:
+        if powered > max_powered:
+            min_used = used
+            max_powered = powered
+        if powered == max_powered:
             if min_used > used:
                 min_used = used
-            max_powered = powered
         return
 
     if c == N:
