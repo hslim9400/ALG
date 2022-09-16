@@ -7,7 +7,7 @@ def make_bin(num):
         target //= 2
     return ans
 
-
+ans = []
 T = int(input())
 for test_case in range(1, T+1):
     N, V = map(int, input().split())
@@ -24,4 +24,8 @@ for test_case in range(1, T+1):
         total_dist = len(v)-1 + dist_right
     else:
         total_dist = len(v)-1 + dist_left
-    print(f'#{test_case} {total_dist}')
+    ans.append(f'#{test_case} {total_dist}')
+    print(ans)
+
+for i in range(T):
+    print(ans[i])
