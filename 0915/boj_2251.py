@@ -1,9 +1,13 @@
 def pour(x, y):
     y_space = y[1] - y[0]
     if x[0] <= y_space:
-        return [0, x[1]], [y[0]+x[0], y[1]]
+        y[0] = y[0] + x[0]
+        x[0] = 0
+        return x, y, x[0]
     else:
-        return [x[0]-y_space, x[1]], [y[1], y[1]]
+        x[0] = x[0] - y_space
+        y[0] = y[1]
+        return x, y, y[1]-y[0]
 
 
 A, B, C = map(int, input().split())
@@ -20,13 +24,15 @@ while queue:
     c = [current[2], C]
     next_steps = []
     for x in [a, b, c]:
-        print(id(x), id(a))
         for y in [a, b, c]:
             if x != y and x[0]:
-                x, y = pour(x, y)
-                print(x, y, a, b, c)
-                next_steps.append((a[0], b[0], c[0]))
-    print(next_steps)
+                x, y, diff = pour(x, y)
+                print(x, y, 1)
+                if 0 <= a[0] <= A and 0 <= b[0] <= B and 0 <= c[0] <= C:
+                    next_steps.append((a[0], b[0], c[0]))
+                x[0] += diff
+                y[0] -= diff
+                print(x, y, 2)
     for next_step in next_steps:
         if next_step not in visited:
             queue.append(next_step)
