@@ -1,9 +1,9 @@
-def remake(num, k):
-    target = ''
-    while num:
-        temp = str(num % k)
-        target = temp + target
-        num //= k
+def remake(num, k):  # num을 k진수로
+    target = ''  # 숫자를 하나하나 붙여줄 것이므로 문자열로 취급
+    while num:  # num이 0이 되면 종료
+        temp = str(num % k)  # 현재 num을 k로 나눈 나머지를
+        target = temp + target  # 맨 앞에 붙인다.
+        num //= k  # 몫을 다음 연산으로 넘긴다.
     return target
 
 
