@@ -5,18 +5,18 @@ for i in range(N):
 min_price = N*N*200
 dx = [0, 1, 0, -1]
 dy = [1, 0, -1, 0]
-# 공포의 7중포문
+# 공포의 7중포문 
 # 꽃 세개의 좌표를 모두 탐색한다.
 for x1 in range(1, N-1):
     for y1 in range(1, N-1):
         for x2 in range(1, N-1):
             for y2 in range(1, N-1):
                 if (x1, y1) == (x2, y2):  # 겹치면 안됨
-                    break
+                    continue
                 for x3 in range(1, N-1):
                     for y3 in range(1, N-1):
                         if (x2, y2) == (x3, y3) or (x1, y1) == (x3, y3):  # 하나라도 겹치면 안됨
-                            break
+                            continue
                         targets = {(x1,y1), (x2,y2), (x3,y3)}  # 꽃잎도 겹치면 안됨
                         for d in range(4):  # 꽃 잎 생성
                             targets.add((x1 + dx[d], y1 + dy[d]))
