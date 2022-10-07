@@ -39,7 +39,7 @@ for i in range(1<<N):
         for y in group_b:
             if adj[x][y]:
                 union(x, y)
-    for j in range(N):
+    for j in range(1, N):
         roots.add(find_p(j))
     a_population = 0
     b_population = 0
@@ -55,5 +55,6 @@ for i in range(1<<N):
     diff = abs(a_population - b_population)
     if diff < min_diff:
         min_diff = diff
-
+if min_diff == N*100:
+    min_diff = -1
 print(min_diff)
