@@ -1,51 +1,50 @@
-from collections import deque
 
-N, M, K =map(int, input().split())
+N, M, K = map(int, input().split())
 
 board = [[5]*N for _ in range(N)]
-trees = []
+trees = [[[] for _ in range(N)] for _ in range(N)]
 supply = []
 stacks = [[0]*N for _ in range(N)]
 for i in range(N):
     supply.append(list(map(int, input().split())))
 for i in range(M):
     r, c, age = map(int, input().split())
-    trees.append([r-1, c-1, age, 0])
-trees.sort(key=lambda x: x[2])
+    r, c = r-1, c-1
+    trees[r][c].append(age)
+for i in range(N):
+    for j in range(N):
+        trees[i][j].sort(reverse=True)
 year = 0
-trees = deque(trees)
-
 while year < K:
-    die = []
-    next_trees = deque()
-    live = []
-    for tree in trees:
-        board[tree[0]][tree[1]] += (year - stacks[tree[0]][tree[1]]) * supply[tree[0]][tree[1]]
-        stacks[tree[0]][tree[1]] = year
-        if tree[2] > board[tree[0]][tree[1]]:
-            die.append(tree)
-        else:
-            board[tree[0]][tree[1]] -= tree[2]
-            tree[2] += 1
-            live.append(tree)
-            next_trees.append(tree)
-    for tree in die:
-        board[tree[0]][tree[1]] += tree[2]//2
 
-    for tree in live:
-        if not tree[2]%5:
-            for dr in [0, 1, -1]:
-                for dc in [0, 1, -1]:
-                    if not dr and not dc:
-                        continue
-                    if 0 <= tree[0]+dr < N and 0 <= tree[1]+dc < N:
-                        for new_tree in next_trees:
-                            if new_tree[0] == tree[0]+dr and new_tree[1] == tree[1]+dc:
-                                new_tree[3] += 1
-                                continue
-                        next_trees.appendleft([tree[0]+dr, tree[1]+dc, 1, 0])
-    trees = next_trees
+    for r in range(N):
+        for c in range(N):
+            for idx in range(len(trees[r][c])-1, -1, -1):
+                tree = trees[r][c]
+                if tree[idx] > board[r][c]:
+                    for dead in tree[:idx+1]:
+                        board[r][c] += dead // 2
+                    trees[r][c] = tree[idx+1:]
+                    break
+                board[r][c] -= tree[idx]
+                tree[idx] += 1
+
+    for r in range(N):
+        for c in range(N):
+            for tree in trees[r][c]:
+                if not tree%5:
+                    for dr in [0,1,-1]:
+                        for dc in [0,1,-1]:
+                            if (dr or dc) and 0<=r+dr<N and 0<=c+dc<N:
+                                trees[r+dr][c+dc].append(1)
+
+    for r in range(N):
+        for c in range(N):
+            board[r][c] += supply[r][c]
 
     year += 1
-
-print(len(trees))
+ans = 0
+for r in range(N):
+    for c in range(N):
+        ans += len(trees[r][c])
+print(ans)
