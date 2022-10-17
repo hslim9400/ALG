@@ -103,7 +103,7 @@ for _ in range(M):
     for k in range(1, dist+1):
         r, c = shark[0]+k*dr[d], shark[1]+k*dc[d]
         idx = board[r][c]
-        if idx-k+1 > len(marbles)+1:
+        if idx-k+1 > len(marbles)-1:
             break
         del marbles[idx-k+1]
     marbles = explode(marbles)
