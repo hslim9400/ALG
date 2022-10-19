@@ -1,4 +1,3 @@
-from collections import deque
 def snail():  # 달팽이 찍기
     global board
     current = N * N - 1
