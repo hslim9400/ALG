@@ -1,17 +1,18 @@
-def rotate(start_r, start_c):
+def rotate(start_r, start_c):  # 90도 회전
     global board
-    new_part = [[0]*stride for _ in range(stride)]
+    new_part = [[0]*stride for _ in range(stride)]  # 정해진 크기만큼 회전시킬 배열의 초기값
     target_part = [board[i][start_c:start_c+stride] for i in range(start_r, start_r+stride)]
+    # 원래 보드의 정해진 크기만큼의 부분
 
     for r in range(stride):
         for c in range(stride):
-            new_part[r][c] = target_part[stride-1-c][r]
+            new_part[r][c] = target_part[stride-1-c][r]  # 회전시킨 값을 저장시키고
     for r in range(stride):
         for c in range(stride):
-            board[start_r+r][start_c+c] = new_part[r][c]
+            board[start_r+r][start_c+c] = new_part[r][c]  # 저장해놓은 값들을 보드에 반영
 
 
-def dfs(start_r, start_c):
+def dfs(start_r, start_c):  # 그룹 찾기 dfs
     global visited
     targets = []
     stack = [(start_r, start_c)]
@@ -31,7 +32,7 @@ def dfs(start_r, start_c):
     return targets
 
 
-def melt(board):
+def melt(board):  # 주변에 얼음이 3개 이상 없다면 녹이기
     global total
     new_board = [[0] * n for _ in range(n)]
     for r in range(n):
@@ -63,7 +64,7 @@ for _ in range(n):
 spells = list(map(int, input().split()))
 dr = [0, 1, 0, -1]
 dc = [1, 0, -1, 0]
-for l in spells:
+for l in spells:  # 정해진 길이만큼 잘라서 시행
     stride = 2**l
     for i in range(n//stride):
         for j in range(n//stride):
@@ -73,7 +74,7 @@ for l in spells:
 
 visited = [[0] * n for _ in range(n)]
 chunk = 0
-for i in range(n):
+for i in range(n):  # 파이어스톰이 모두 끝나고 덩어리 찾기
     for j in range(n):
         if board[i][j] and not visited[i][j]:
             target = dfs(i, j)
