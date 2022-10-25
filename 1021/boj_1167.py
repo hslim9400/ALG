@@ -30,6 +30,7 @@ for _ in range(N):
     node = info[0]
     for i in range(1, len(info)//2):
         adj[node].append([info[2*i-1], info[2*i]])
+
 start, dist = dfs(1)
 end, ans = dfs(start)
 print(ans)
