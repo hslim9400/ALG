@@ -1,8 +1,13 @@
 from copy import deepcopy
 dr = [-1, -1, 0, 1, 1, 1, 0, -1]
 dc = [0, -1, -1, -1, 0, 1, 1, 1]
-#
+# 사용한 자료구조:
+# fishes : 물고기 번호를 키, 좌표와 방향을 값으로 갖는 딕셔너리
+# shark : 상어의 좌표와 방향이 저장된 리스트
+# board : 물고기 번호, 좌표가 저장된 2차원 리스트
 
+
+# 물고기를 움직이는 함수
 def move_fishes(fishes, board, shark):
 
     for fish in range(1, 17):
@@ -31,6 +36,8 @@ def move_fishes(fishes, board, shark):
     return fishes, board
 
 
+# 상어를 움직이는 함수
+# 상어가 갈 곳이 없다면 여기서 답을 냄
 def move_shark(fishes, board, shark, point):
     global ans
     flag = True
@@ -50,7 +57,7 @@ def move_shark(fishes, board, shark, point):
                 new_fishes = deepcopy(fishes)
                 del new_fishes[fish[0]]
                 simulate(new_fishes, new_board, new_shark, new_point)
-                flag = False
+                flag = False # 움직일 수 있다면 답을 갱신하지 않음
             current = (nr, nc)
         else:
             break
@@ -58,6 +65,9 @@ def move_shark(fishes, board, shark, point):
         ans = max(ans, point)
 
 
+# 위의 두 함수를 실행시키는 함수
+# simulate에서 move_fish와 move_shark를 실행하고
+# move_shark에서 다음 simulate를 실행하는 재귀 구조
 def simulate(fishes, board, shark, point):
     new_fishes = deepcopy(fishes)
     new_board = deepcopy(board)
@@ -76,6 +86,9 @@ for i in range(4):
         fishes[fish] = [(i, j), direction]
         board_line.append([fish, direction])
     board.append(board_line)
+
+# 초기 세팅: (0, 0)에 상어가 들어가고 그 자리에 있던 물고기의 방향을 가짐
+# 해당 자리의 물고기를 삭제
 shark = [(0, 0), board[0][0][1]]
 ans = board[0][0][0]
 del fishes[board[0][0][0]]
