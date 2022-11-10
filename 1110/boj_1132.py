@@ -1,5 +1,5 @@
 
-
+# 그리디
 N = int(input())
 
 targets = []
