@@ -4,6 +4,7 @@ detectors = list(map(int, input().split()))
 detectors = set(detectors[1:])
 
 ans = 0
+ 
 parties = []
 for _ in range(M):
     participants = list(map(int, input().split()))
