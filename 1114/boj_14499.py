@@ -1,4 +1,5 @@
 def roll(current_facing, move):  # 주사위 굴리기
+    # 방향에 따라 움직이는 면들을 밀어준다.
     if move == 0:
         current_facing['top'], current_facing['east'], current_facing['bottom'], current_facing['west'] = \
             current_facing['east'], current_facing['bottom'], current_facing['west'], current_facing['top']
