@@ -14,7 +14,9 @@ def roll(current_facing, move):  # 주사위 굴리기
             current_facing['north'], current_facing['top'], current_facing['south'], current_facing['bottom']
     return current_facing
 
-
+# 자료구조
+# dice : 한 면의 숫자를 키, 그 숫자에 적혀있는 값을 값으로 하는 딕셔너리
+# current_facing : 위, 아래, 동서남북방향이 키, 그 방향을 어떤 면이 보고 있는지 값으로 하는 딕셔너리 
 dice = {1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0}
 current_facing = {'bottom': 6, 'top': 1, 'east': 3, 'west': 4, 'south': 5, 'north': 2}
 N, M, x, y, k = map(int, input().split())

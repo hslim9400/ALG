@@ -16,6 +16,7 @@ def roll(current_facing, move):
 
 
 def get_point(start):
+    # 점수를 계산하는 dfs
     stack = [start]
     target = board[start[0]][start[1]]
     visited = set()
