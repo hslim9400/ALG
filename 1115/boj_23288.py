@@ -1,4 +1,5 @@
 def roll(current_facing, move):
+    # 주사위 굴리기
     if move == 0:
         current_facing['top'], current_facing['west'], current_facing['bottom'], current_facing['east'] = \
             current_facing['west'], current_facing['bottom'], current_facing['east'], current_facing['top']
