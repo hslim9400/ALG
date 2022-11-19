@@ -46,6 +46,7 @@ for _ in range(N):
 current = (0, 0, 0)
 points = 0
 for _ in range(K):
+    # 조건에 따라 k번 이동
     r, c, d = current
     nr, nc = r+dr[d], c+dc[d]
     if 0 <= nr < N and 0 <= nc < M:
