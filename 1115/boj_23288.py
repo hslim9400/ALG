@@ -59,6 +59,7 @@ for _ in range(K):
             d -= 1
             d %= 4
     else:
+        # 방향을 따라 갔을 때 지도를 넘어간다면 반대방향으로 돌림
         d += 2
         d %= 4
         nr, nc = r+dr[d], c+dc[d]
