@@ -4,7 +4,7 @@ for test_case in range(1, T+1):
 
     target = list(input())
     frog_dicts = {'c': 0, 'r': 0, 'o': 0, 'a': 0, 'k': 0}
-    ans = 0
+    ans = 0 # 답
     stack = 0  # 울고있는 개구리
     playing = 0  # 노는 개구리
     for i in target:
