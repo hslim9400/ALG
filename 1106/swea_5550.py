@@ -3,7 +3,7 @@ T = int(input())
 for test_case in range(1, T+1):
 
     target = list(input())
-    frog_dicts = {'c': 0, 'r': 0, 'o': 0, 'a': 0, 'k': 0}
+    frog_dicts = {'c': 0, 'r': 0, 'o': 0, 'a': 0, 'k': 0} # 이상함을 감지하기 위한 딕셔너리
     ans = 0 # 답
     stack = 0  # 울고있는 개구리
     playing = 0  # 노는 개구리
