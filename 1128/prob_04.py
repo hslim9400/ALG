@@ -1,4 +1,4 @@
-
+# lca 만들기
 
 def lca(edges, roots):
     n = len(edges) + 1
