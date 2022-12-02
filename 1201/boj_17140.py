@@ -1,7 +1,14 @@
+# 사용한 자료구조
+# A: 문제에 나온대로의 2차원 배열
+# target: R연산을 수행할 경우 A, C연산을 수행할 경우 A의 전치
+# result: 연산을 수행한 뒤의 target
 
+
+# 한 줄에 대해 문제대로 정렬하는 함수
+# counting sort와 유사한 접근을 한다.
 def remake(line, max_value):
     new_line = []
-    temp = []
+    temp = []  # 여기에 모아서 정렬한 후 new_line에 넣어줄 것
     counts = [0] * (max_value + 1)
     for num in line:
         counts[num] += 1
@@ -27,6 +34,7 @@ for _ in range(3):
 transposed = False
 answer = -1
 for t in range(101):
+    # 100초를 봐야 하므로 101까지 범위 설정
     if rows >= r and columns >= c and A[r][c] == k:
         answer = t
         break

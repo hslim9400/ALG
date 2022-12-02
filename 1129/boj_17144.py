@@ -1,9 +1,15 @@
+# 사용한 자료구조
+# dusts: 좌표를 키, 먼지의 크기를 값으로 갖는 딕셔너리
+# robot: [위쪽 로봇 좌표, 아래쪽 로봇 좌표]로 구성된 리스트
+
+# 편의를 위해 위쪽 델타탐색과 아래쪽 델타탐색을 다른 순서로 구성
 dr_upper = [-1, 0, 1, 0]
 dc_upper = [0, 1, 0, -1]
 dr_downer = [1, 0, -1, 0]
 dc_downer = [0, 1, 0, -1]
 
-
+# 먼지가 확산되는 함수
+# 먼저 확산된 먼지가 다음 먼지의 확산에 영향을 주면 안되므로 새로운 딕셔너리를 만들어 넣는다.
 def diffusion():
     global dusts
     new_dusts = {}
@@ -33,11 +39,15 @@ def diffusion():
     dusts = new_dusts
 
 
+# 공기청정기를 돌리는 함수
+# 문제와 같이 먼지를 밀어내기보다는 반대로 돌며 당겨오는 것이 구현하기 쉽다.
 def clean():
     global dusts
 
     for start in robot:
         upper = 1 - robot.index(start)
+        # 위쪽 로봇이면 upper가 1, 아래쪽이면 0
+        # 이에 따라 위에서 나눠놓은 델타탐색 리스트가 결정됨
         if upper:
             dr, dc = dr_upper, dc_upper
         else:
@@ -59,13 +69,11 @@ def clean():
 
 
 R, C, T = map(int, input().split())
-board = []
 robot = [0, 0]
 dusts = {}
 
 for i in range(R):
     line = list(map(int, input().split()))
-    board.append(line)
     for j in range(C):
         if line[j] == -1:
             if not robot[0]:

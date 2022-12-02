@@ -1,9 +1,17 @@
+# 사용한 자료구조
+# sharks: 좌표를 키, [크기, 방향 속력]을 값으로 갖는 딕셔너리
+
+
 dr = [0, -1, 1, 0, 0]
 dc = [0, 0, 0, 1, -1]
 
 
+# 상어 움직이기
+# 가장 큰 상어만 남기면 되므로 같은 좌표에 모이는 상어를 모두 모아서 처리하지 않아도 된다.
 def move_shark():
     global sharks
+    # 속력은 움직여야 할 폭에 맞추어 나머지로 남아있는 상태이지만 이 속력으로도 한 번에 1씩만 움직이면 시간초과
+    # 한 번의 움직임으로 벽에 도달하게 함. 상어 한 마리당 최대 3회 이동
     new_sharks = {}
     for shark in sharks.keys():
         r, c = shark
@@ -44,6 +52,8 @@ def move_shark():
     sharks = new_sharks
 
 
+# 상어 잡기
+# 정해진 열 내에서 행을 내려가며 상어를 만나면 잡아내고 종료
 def catch_shark(col):
     global sharks, ans
     for r in range(R):
