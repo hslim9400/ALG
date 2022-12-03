@@ -61,6 +61,8 @@ for start in starts:
     for virus in viruses:
         current_board[virus[0]][virus[1]] = -2
     while viruses:
+        if ans == time:
+            break
         time += 1
         viruses = simulate(viruses)
     if left:  # 모든 공간을 바이러스로 채워야 답을 갱신할 수 있다.
