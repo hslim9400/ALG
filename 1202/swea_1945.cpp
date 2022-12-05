@@ -3,6 +3,7 @@
 int main()
 {
 	int T; std::cin >> T;
+	// 입력받기
 	for (int test_case = 1; test_case <= T; test_case++)
 	{
 		int N; std::cin >> N;
