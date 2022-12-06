@@ -20,6 +20,7 @@ int main()
 		}
 		std::cout << '#' << test_case << ' ';
 		for (int i = 0; i < 5; i++)
+			// 한줄에 걸쳐 출력
 			std::cout << answer[i] << ' ';
 		std::cout << '\n';
 
