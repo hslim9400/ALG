@@ -32,7 +32,7 @@ for test_case in range(1, T+1):
         idx += 1
         idx %= len(orders)
 
-    ans = ''
+    ans = ''  # ?
     for i in target:
         ans += str(i)
     print(f'#{test_case}', ans)
