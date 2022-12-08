@@ -16,6 +16,7 @@ def lca(edges, roots):
 
     stack = [(1, 0)]
     visited = set()
+    # 1을 루트로 트리 구성하기
     while stack:
         current, current_rank = stack.pop()
         if current in visited:
