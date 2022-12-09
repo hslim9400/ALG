@@ -35,6 +35,7 @@ def lca(edges, roots):
     print(edge_dict)
     current_root = 1
     for root in roots:
+        # 루트가 변하면 lca로 공통조상까지의 간선들만 방향 변경하기
         print(11, current_root, root)
         if rank[current_root] < rank[root]:
             target_rank = rank[current_root]
