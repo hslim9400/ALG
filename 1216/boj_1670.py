@@ -22,7 +22,4 @@ for n in range(3, N//2+1):
             Sn += S[i] * S[n-1-i] * 2
             Sn %= 987654321
     S.append(Sn % 987654321)
-if N == 2 or N == 0:  # 0,1,2명일 때 경우를 미리 정하고 들어가서 오답을 출력했음
-    print(1)
-else:
-    print(S[-1])
+print(S[N])
