@@ -10,6 +10,7 @@ for i in range(len(target)-1, -1, -1):
 
 
     else:
+        answer = 'NOISE'
 
 
 print(answer)
