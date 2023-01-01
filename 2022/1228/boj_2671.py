@@ -1,16 +1,29 @@
 
 target = input()
-first = True
-second = True
-stack_1 = []
-stack_2 = []
+prev = target[0]
+stack = [prev]
+proper = True
 answer = 'SUBMARINE'
-for i in range(len(target)-1, -1, -1):
-    if target[i] == '1':
-        pass
+for i in range(1, len(target)):
+
+    current = target[i]
+
+    if current == '1':
+
+        if not stack:
+            proper = False
+            stack.append(current)
+            continue
+
+        if stack == ['1']:
+            answer = "NOISE"
+            break
+
+        if prev == '0':
+            if stack == ['0']:
+                stack = []
+            else:
+
 
     else:
-        answer = 'NOISE'
-
-
-print(answer)
+        if
