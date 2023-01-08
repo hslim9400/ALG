@@ -1,5 +1,4 @@
 # 알파벳마다 점수를 매겨서 높은 점수를 받은 것이 나의 성격이 됨
-# 어렵지 않음ㄴ
 
 def solution(survey, choices):
     answer = ''
