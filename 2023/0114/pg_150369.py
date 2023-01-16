@@ -17,7 +17,7 @@ def solution(cap, n, deliveries, pickups):
         if pickup_idx and delivery_idx:
             break
 
-    while pickup_idx or delivery_idx:
+    while pickup_idx or delivery_idx:  # 둘 다 남지 않을 때 까지
         answer += max(delivery_idx, pickup_idx)*2
         current_deliveries = min(left_deliveries, cap)
         current_pickups = min(left_pickups, cap)
