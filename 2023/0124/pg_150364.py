@@ -15,7 +15,7 @@ def solution(edges, target):
     for node in nodes:
         if target[node]:
             leaves[node] = {1: 0, 2: 0, 3: 0}
-        else:
+        else:  # 정렬하고 0을 추가하여 어떤 인덱스가 현재 선택된 길인지 표시
             children[node].sort()
             children[node].append(0)
     finished = set()
