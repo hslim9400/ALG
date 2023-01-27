@@ -3,6 +3,9 @@ def solution(edges, target):
     answer = []
     children = [[] for _ in range(len(target))]
     nodes = set()
+    # 리프가 도는 순서는 정해져있음
+    # 일단 리프들에 3, 2, 1순서로 던지며 target을 맞추고
+    # 숫자가 맞다면 2를 1, 1로, 3을 2, 1로 바꾸며 한 턴씩 벌어줌
 
     for edge in edges:
         parent = edge[0]
@@ -13,7 +16,7 @@ def solution(edges, target):
 
     leaves = {}
     for node in nodes:
-        if target[node]:
+        if target[node]: 
             leaves[node] = {1: 0, 2: 0, 3: 0}
         else:  # 정렬하고 0을 추가하여 어떤 인덱스가 현재 선택된 길인지 표시
             children[node].sort()
@@ -23,8 +26,8 @@ def solution(edges, target):
     while True:
         leaf = 1
         while children[leaf]:
-            child = children[leaf][children[leaf][-1]]
-            children[leaf][-1] += 1
+            child = children[leaf][children[leaf][-1]]  # 이번 길의 자식을 고르고
+            children[leaf][-1] += 1  # 아까 추가한 0을 이용해 길을 변경해줌
             children[leaf][-1] %= len(children[leaf]) - 1
             leaf = child
         cycle.append(leaf)
