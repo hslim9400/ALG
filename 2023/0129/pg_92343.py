@@ -1,48 +1,49 @@
+from collections import deque
 def solution(info, edges):
     answer = 0
     children = [[] for _ in range(len(info))]
-    for i in range(len(info)):
-        info[i] = [info[i], 0]
+    parents = [0 for _ in range(len(info))]
 
     for edge in edges:
         children[edge[0]].append(edge[1])
 
-    def dfs(node, current_sheep, current_wolf):
-        nonlocal finish, sheep, wolf, met_wolves
-        for child in children[node]:
-            if info[child][0]:
-                if current_sheep == current_wolf + 1:
-                    met_wolves = []
-                    continue
-                if not info[child][1]:
-                    met_wolves.append(child)
-                    dfs(child, current_sheep, current_wolf+1)
-                    if met_wolves and met_wolves[-1] == child:
-                        met_wolves.pop()
+    def bfs():
+        nonlocal finish, visited, wolves, sheeps
+        queue = deque([[0, sheeps-wolves]])
+        while queue:
+            print(queue)
+            print(visited)
+            current = queue.popleft()
+            current, left_sheep = current
+            if current in visited:
+                for child in children[current]:
+                    queue.append([child, left_sheep])
+                continue
+            for child in children[current]:
+                if info[child]:
+                    if left_sheep > 2:
+                        queue.append([child, left_sheep-1])
                 else:
-                    dfs(child, current_sheep, current_wolf)
-            else:
-                if not info[child][1]:
-                    info[child][1] = 1
-                    sheep += 1
-                    for met_wolf in met_wolves:
-                        info[met_wolf][1] = 1
-                        wolf += 1
-                    met_wolves = []
                     finish = False
-                    dfs(child, sheep, wolf)
-                else:
-                    dfs(child, sheep, wolf)
+                    node = child
+                    sheeps += 1
+                    visited.add(node)
+                    node = parents[node]
+                    while node not in visited:
+                        wolves += 1
+                        visited.add(node)
+                        node = parents[node]
+                    queue.append([child, left_sheep+1])
 
     finish = False
-    sheep = 1
-    wolf = 0
+    sheeps = 1
+    wolves = 0
+    visited = set()
     while not finish:
         finish = True
-        met_wolves = []
-        dfs(0, sheep, wolf)
+        bfs()
 
-    answer = sheep
+    answer = sheeps
     return answer
 
-solution([0,1,0,1,1,0,1,0,0,1,0], [[0,1],[0,2],[1,3],[1,4],[2,5],[2,6],[3,7],[4,8],[6,9],[9,10]])
+print(solution([0,0,1,1,1,0,1,0,1,0,1,1], [[0,1],[1,2],[1,4],[0,8],[8,7],[9,10],[9,11],[4,3],[6,5],[4,6],[8,9]]))
