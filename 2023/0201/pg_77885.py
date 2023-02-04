@@ -1,6 +1,9 @@
 def solution(numbers):
     answer = []
     for number in numbers:
+        # 뒤부터 확인하며 0을 만나면 1로 바꾸고
+        # 그 숫자로부터 다시 뒤로가며 1을 만나면 0으로 바꿈
+        # 만약 모두 1이라면 가장 앞의 1을 10으로 바꿈
         target = list(bin(number)[2:][::-1])
         for i in range(len(target)):
             if target[i] == '0':
