@@ -5,16 +5,20 @@ def solution(numbers):
         if number == 1:
             answer.append(1)
             continue
-        target = bin(number)[2:]
+        target = bin(number)[2:]  # 0b어쩌구에서 0b를 떼고
         target_length = 1
         n = 2
         while number >= n:
+            # 비트 세두기
             target_length = (target_length+1)*2 - 1
             n = 2 ** target_length
 
-        target = '0'*(target_length-len(target)) + target
+        target = '0'*(target_length-len(target)) + target  # 남는 비트 0으로 채우기
         leaf_nodes = [[]]
         for i in range(1, target_length+1):
+            # 이진트리 만들기
+            # 홀수 인덱스는 리프노드가 되고
+            # 왼 쪽부터 리프 두개씩 한 세트
             if i % 2:
                 leaf_nodes[-1].append(i)
                 if len(leaf_nodes[-1]) == 2:
@@ -22,6 +26,9 @@ def solution(numbers):
         queue = deque(leaf_nodes)
 
         while queue:
+            # 같은 부모를 두고있는 노드를 한 세트씩 꺼내면서 
+            # 만약 자식이 1인데 부모가 0이다?
+            # 만들 수 없는 숫자라는 것
             current = queue.popleft()
             left, right = current[0]-1, current[1]-1
             parent = (left+right)//2
