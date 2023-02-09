@@ -2,6 +2,7 @@ from collections import deque
 
 def solution(rc, operations):
     answer = []
+    # 안녕하세요
     top = deque([])
     bottom = deque([])
     left = deque([])
