@@ -1,7 +1,7 @@
 def solution(game_board, table):
     answer = 0
     possible_peices = {}
-    real_spaces = set()
+    real_spaces = {}
     dr = [1, 0, -1, 0]
     dc = [0, 1, 0, -1]
     N = len(game_board)
@@ -29,12 +29,42 @@ def solution(game_board, table):
                     if peice in peices.keys():
                         peices[peice] += 1
                     else:
-                        possible_peices[peice] = 1
+                        peices[peice] = 1
 
-        print(peices)
         return peices
 
-    real_spaces = find_peices(game_board)
+    for i in range(N):
+        for j in range(N):
+            game_board[i][j] = 1 - game_board[i][j]
+
+    new_peices = find_peices(game_board)
+    for peice in new_peices.keys():
+        if peice in real_spaces.keys():
+            real_spaces[peice] += new_peices[peice]
+        else:
+            real_spaces[peice] = new_peices[peice]
+    game_board = list(zip(*game_board[::-1]))
+    new_peices = find_peices(game_board)
+    for peice in new_peices.keys():
+        if peice in real_spaces.keys():
+            real_spaces[peice] += new_peices[peice]
+        else:
+            real_spaces[peice] = new_peices[peice]
+    game_board = list(zip(*game_board[::-1]))
+    new_peices = find_peices(game_board)
+    for peice in new_peices.keys():
+        if peice in real_spaces.keys():
+            real_spaces[peice] += new_peices[peice]
+        else:
+            real_spaces[peice] = new_peices[peice]
+    game_board = list(zip(*game_board[::-1]))
+    new_peices = find_peices(game_board)
+    for peice in new_peices.keys():
+        if peice in real_spaces.keys():
+            real_spaces[peice] += new_peices[peice]
+        else:
+            real_spaces[peice] = new_peices[peice]
+
     new_peices = find_peices(table)
     for peice in new_peices.keys():
         if peice in possible_peices.keys():
@@ -63,14 +93,10 @@ def solution(game_board, table):
         else:
             possible_peices[peice] = new_peices[peice]
 
-    print()
-    print(possible_peices)
     for peice in real_spaces:
         if peice in possible_peices:
             answer += len(peice) * min(real_spaces[peice], possible_peices[peice])
 
-    print(answer)
+    print(answer//4)
     return answer
 
-solution([[1,1,0,0,1,0],[0,0,1,0,1,0],[0,1,1,0,0,1],[1,1,0,1,1,1],[1,0,0,0,1,0],[0,1,1,1,0,0]],
-         [[1,0,0,1,1,0],[1,0,1,0,1,0],[0,1,1,0,1,1],[0,0,1,0,0,0],[1,1,0,1,1,0],[0,1,0,0,0,0]])
