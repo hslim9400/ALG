@@ -1,7 +1,7 @@
 from itertools import combinations
 def solution(orders, course):
     answer = []
-    # ㅁㄴㅇㄹ
+    # 
     for num in course:
         menus = {}
         counts = [set() for _ in range(21)]
