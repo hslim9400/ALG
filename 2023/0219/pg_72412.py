@@ -1,37 +1,53 @@
+from itertools import combinations
 def solution(info, query):
     answer = []
-    language = {'cpp': set(), 'java': set(), 'python': set()}
-    position = {'backend': set(), 'frontend': set()}
-    carrier = {'junior': set(), 'senior': set()}
-    soulfood = {'pizza': set(), 'chicken': set()}
-    scores = {}
-    properties = [language, position, carrier, soulfood, scores]
-    for i in range(len(info)):
-        person = info[i].split()
-        for j in range(4):
-            properties[j][person[j]].add(i)
+    languages = {'cpp', 'java', 'python'}
+    positions = {'backend', 'frontend'}
+    careers = {'junior', 'senior'}
+    soulfoods = {'pizza', 'chicken'}
+    properties_combinations = {}
+    properties_combinations[()] = []
+    for language in languages:
+        for position in positions:
+            for career in careers:
+                for soulfood in soulfoods:
+                    for n in range(1, 5):
+                        for combination in combinations([language, position, career, soulfood], n):
+                            properties_combinations[combination] = []
 
+    for person in info:
+        person = person.split()
+        properties_combinations[()].append(int(person[-1]))
+        for n in range(1, 5):
+            for target in combinations(person[:-1], n):
+                properties_combinations[target].append(int(person[-1]))
+    for combination in properties_combinations:
+        properties_combinations[combination].sort()
 
-    for condition in query:
-        current = set(range(len(info)))
-        condition = condition.split()
-        property_idx = 0
-        counts = 0
-        for target in condition:
-            if target == condition[-1]:
-                for candidate_idx in current:
-                    candidate = info[candidate_idx].split()
-                    if int(candidate[-1]) >= int(target):
-                        counts += 1
+    for conditions in query:
+        conditions = conditions.split()
+        cut_off = int(conditions[-1])
+        target = []
+        for condition in conditions:
+            if condition == 'and':
                 continue
-            if target == 'and':
-                continue
-            if target == '-':
-                property_idx += 1
-                continue
-            current = current & properties[property_idx][target]
-            property_idx += 1
-        answer.append(counts)
+            if condition != '-':
+                target.append(condition)
+        candidates = properties_combinations[tuple(target[:-1])]
+        left = 0
+        right = len(candidates) - 1
+        answer.append(0)
+        while 0 <= left <= right <= len(candidates)-1:
+            mid = (right+left)//2
+            if candidates[mid] < cut_off:
+                left = mid + 1
+                answer[-1] = len(candidates) - 1 - mid
+            else:
+                right = mid
+                if left == right:
+                    answer[-1] = len(candidates) - mid
+                    break
+
     return answer
 
 solution(["java backend junior pizza 150","python frontend senior chicken 210","python frontend senior chicken 150","cpp backend senior pizza 260","java backend junior chicken 80","python backend senior chicken 50"],
