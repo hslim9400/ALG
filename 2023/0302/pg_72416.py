@@ -24,14 +24,10 @@ def solution(sales, links):
         if children[current]:
             children_dp = []
             min_diff = float('inf')
-            max_idx = 0
-            idx = 0
             for child in children[current]:
                 children_dp.append(dp[child])
                 if dp[child][0] - dp[child][1] < min_diff:
                     min_diff = dp[child][0] - dp[child][1]
-                    max_idx = idx
-                idx += 1
             flag = False
             for child in children_dp:
                 dp_1 += min(child)
