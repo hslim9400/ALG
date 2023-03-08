@@ -12,7 +12,7 @@ def solution(n, path, order):
     visited = set()
     queue = deque([0])
     parents = {}
-    while queue:
+    while queue:  # 트리 만들기
         current = queue.popleft()
         if current in visited:
             continue
