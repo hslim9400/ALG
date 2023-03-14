@@ -2,7 +2,7 @@ from collections import deque
 
 N = int(input())
 adj = [[] for _ in range(N+1)]
-
+# gd
 for _ in range(N-1):
     start, end = map(int, input().split())
     adj[start].append(end)
