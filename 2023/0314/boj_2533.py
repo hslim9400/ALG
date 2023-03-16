@@ -12,7 +12,7 @@ children = [[] for _ in range(N+1)]
 children_cnt = [0] * (N+1)
 stack = [1]
 visited = set()
-queue = deque([])
+queue = deque([])  # 트리 만들기
 while stack:
     current = stack.pop()
     if current in visited:
