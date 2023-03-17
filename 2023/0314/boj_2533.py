@@ -2,7 +2,6 @@ from collections import deque
 
 N = int(input())
 adj = [[] for _ in range(N+1)]
-# gd
 for _ in range(N-1):
     start, end = map(int, input().split())
     adj[start].append(end)
@@ -12,7 +11,7 @@ children = [[] for _ in range(N+1)]
 children_cnt = [0] * (N+1)
 stack = [1]
 visited = set()
-queue = deque([])  # 트리 만들기
+queue = deque([])
 while stack:
     current = stack.pop()
     if current in visited:
