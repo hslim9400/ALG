@@ -1,9 +1,9 @@
 import copy
 
 def rotate_side(side, direction):
-    if direction == '-':
+    if direction == '+':
         horizontal_cube[side] = list(map(list, zip(*horizontal_cube[side][::-1])))
-        vertical_cube[side] = list(map(list, (zip(*vertical_cube[side][::-1]))))
+        vertical_cube[side] = list(map(list, (zip(*vertical_cube[side]))))[::-1]
 
         if side == 'U':
             horizontal_cube['F'][0], horizontal_cube['L'][0], horizontal_cube['B'][0], horizontal_cube['R'][0] = \
@@ -21,28 +21,28 @@ def rotate_side(side, direction):
             vertical_cube['L'] = list(map(list, zip(*horizontal_cube['L'])))
         if side == 'F':
             horizontal_cube['U'][-1], vertical_cube['R'][0], horizontal_cube['D'][0], vertical_cube['L'][-1] = \
-                vertical_cube['L'][-1], horizontal_cube['U'][-1], vertical_cube['R'][0], horizontal_cube['D'][0]
+                vertical_cube['L'][-1][::-1], horizontal_cube['U'][-1], vertical_cube['R'][0][::-1], horizontal_cube['D'][0]
             vertical_cube['U'] = list(map(list, zip(*horizontal_cube['U'])))
             horizontal_cube['R'] = list(map(list, zip(*vertical_cube['R'])))
             vertical_cube['D'] = list(map(list, zip(*horizontal_cube['D'])))
             horizontal_cube['L'] = list(map(list, zip(*vertical_cube['L'])))
         if side == 'R':
-            horizontal_cube['U'][-1], vertical_cube['B'][0], horizontal_cube['D'][0], vertical_cube['F'][-1] = \
-                vertical_cube['F'][-1], horizontal_cube['U'][-1], vertical_cube['B'][0], horizontal_cube['D'][0]
+            vertical_cube['U'][-1], vertical_cube['B'][0], vertical_cube['D'][-1], vertical_cube['F'][-1] = \
+                vertical_cube['F'][-1], vertical_cube['U'][-1][::-1], vertical_cube['B'][0][::-1], vertical_cube['D'][-1]
             horizontal_cube['U'] = list(map(list, zip(*vertical_cube['U'])))
             horizontal_cube['F'] = list(map(list, zip(*vertical_cube['F'])))
             horizontal_cube['B'] = list(map(list, zip(*vertical_cube['B'])))
             horizontal_cube['D'] = list(map(list, zip(*vertical_cube['D'])))
         if side == 'B':
-            horizontal_cube['U'][-1], vertical_cube['L'][0], horizontal_cube['D'][0], vertical_cube['R'][-1] = \
-                vertical_cube['R'][-1], horizontal_cube['U'][-1], vertical_cube['L'][0], horizontal_cube['D'][0]
+            horizontal_cube['U'][0], vertical_cube['L'][0], horizontal_cube['D'][-1], vertical_cube['R'][-1] = \
+                vertical_cube['R'][-1], horizontal_cube['U'][0][::-1], vertical_cube['L'][0], horizontal_cube['D'][-1][::-1]
             vertical_cube['U'] = list(map(list, zip(*horizontal_cube['U'])))
             horizontal_cube['R'] = list(map(list, zip(*vertical_cube['R'])))
             vertical_cube['D'] = list(map(list, zip(*horizontal_cube['D'])))
             horizontal_cube['L'] = list(map(list, zip(*vertical_cube['L'])))
         if side == 'L':
-            horizontal_cube['U'][-1], vertical_cube['F'][0], horizontal_cube['D'][0], vertical_cube['B'][-1] = \
-                vertical_cube['B'][-1], horizontal_cube['U'][-1], vertical_cube['F'][0], horizontal_cube['D'][0]
+            vertical_cube['U'][0], vertical_cube['F'][0], vertical_cube['D'][0], vertical_cube['B'][-1] = \
+                vertical_cube['B'][-1][::-1], vertical_cube['U'][0], vertical_cube['F'][0], vertical_cube['D'][0][::-1]
             horizontal_cube['U'] = list(map(list, zip(*vertical_cube['U'])))
             horizontal_cube['F'] = list(map(list, zip(*vertical_cube['F'])))
             horizontal_cube['B'] = list(map(list, zip(*vertical_cube['B'])))
@@ -50,7 +50,7 @@ def rotate_side(side, direction):
 
     else:
         horizontal_cube[side] = list(map(list, zip(*horizontal_cube[side])))[::-1]
-        vertical_cube[side] = list(map(list, (zip(*vertical_cube[side]))))[::-1]
+        vertical_cube[side] = list(map(list, (zip(*vertical_cube[side][::-1]))))
 
         if side == 'U':
             horizontal_cube['F'][0], horizontal_cube['L'][0], horizontal_cube['B'][0], horizontal_cube['R'][0] = \
@@ -68,28 +68,28 @@ def rotate_side(side, direction):
             vertical_cube['L'] = list(map(list, zip(*horizontal_cube['L'])))
         if side == 'F':
             horizontal_cube['U'][-1], vertical_cube['R'][0], horizontal_cube['D'][0], vertical_cube['L'][-1] = \
-                vertical_cube['R'][0], horizontal_cube['D'][0], vertical_cube['L'][-1], horizontal_cube['U'][-1]
+                vertical_cube['R'][0], horizontal_cube['D'][0][::-1], vertical_cube['L'][-1], horizontal_cube['U'][-1][::-1]
             vertical_cube['U'] = list(map(list, zip(*horizontal_cube['U'])))
             horizontal_cube['R'] = list(map(list, zip(*vertical_cube['R'])))
             vertical_cube['D'] = list(map(list, zip(*horizontal_cube['D'])))
             horizontal_cube['L'] = list(map(list, zip(*vertical_cube['L'])))
         if side == 'R':
-            horizontal_cube['U'][-1], vertical_cube['B'][0], horizontal_cube['D'][0], vertical_cube['F'][-1] = \
-                vertical_cube['B'][0], horizontal_cube['D'][0], vertical_cube['F'][-1], horizontal_cube['U'][-1]
+            vertical_cube['U'][-1], vertical_cube['B'][0], vertical_cube['D'][-1], vertical_cube['F'][-1] = \
+                vertical_cube['B'][0][::-1], vertical_cube['D'][-1][::-1], vertical_cube['F'][-1], vertical_cube['U'][-1]
             horizontal_cube['U'] = list(map(list, zip(*vertical_cube['U'])))
             horizontal_cube['F'] = list(map(list, zip(*vertical_cube['F'])))
             horizontal_cube['B'] = list(map(list, zip(*vertical_cube['B'])))
             horizontal_cube['D'] = list(map(list, zip(*vertical_cube['D'])))
         if side == 'B':
-            horizontal_cube['U'][-1], vertical_cube['L'][0], horizontal_cube['D'][0], vertical_cube['R'][-1] = \
-                vertical_cube['L'][0], horizontal_cube['D'][0], vertical_cube['R'][-1], horizontal_cube['U'][-1]
+            horizontal_cube['U'][0], vertical_cube['L'][0], horizontal_cube['D'][-1], vertical_cube['R'][-1] = \
+                vertical_cube['L'][0][::-1], horizontal_cube['D'][-1], vertical_cube['R'][-1][::-1], horizontal_cube['U'][0]
             vertical_cube['U'] = list(map(list, zip(*horizontal_cube['U'])))
             horizontal_cube['R'] = list(map(list, zip(*vertical_cube['R'])))
             vertical_cube['D'] = list(map(list, zip(*horizontal_cube['D'])))
             horizontal_cube['L'] = list(map(list, zip(*vertical_cube['L'])))
         if side == 'L':
-            horizontal_cube['U'][-1], vertical_cube['F'][0], horizontal_cube['D'][0], vertical_cube['B'][-1] = \
-                vertical_cube['F'][0], horizontal_cube['D'][0], vertical_cube['B'][-1], horizontal_cube['U'][-1]
+            vertical_cube['U'][0], vertical_cube['F'][0], vertical_cube['D'][0], vertical_cube['B'][-1] = \
+                vertical_cube['F'][0], vertical_cube['D'][0], vertical_cube['B'][-1][::-1], vertical_cube['U'][0][::-1]
             horizontal_cube['U'] = list(map(list, zip(*vertical_cube['U'])))
             horizontal_cube['F'] = list(map(list, zip(*vertical_cube['F'])))
             horizontal_cube['B'] = list(map(list, zip(*vertical_cube['B'])))
@@ -111,6 +111,7 @@ for test_case in range(T):
     for i in range(n):
         order = orders[i]
         rotate_side(order[0], order[1])
-        print(horizontal_cube)
-    print(horizontal_cube['U'])
+
+    for i in range(3):
+        print(''.join(horizontal_cube['U'][i]))
 
