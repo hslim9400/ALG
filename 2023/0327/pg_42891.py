@@ -17,6 +17,7 @@ def solution(food_times, k):
     counts_list = deque(sorted(counts_list))
     rounds = 0
     while k and left_food:
+        # k에 빨리 접근하기
         current_minimum = counts_list.popleft()
         print(k, current_minimum, left_food)
         if cycle * (current_minimum - rounds) <= k:
