@@ -1,4 +1,5 @@
 def floyd_warshall(n, adj):
+    # 모든 노드로부터 모든 노드로의 거리
     dists = [[float('INF')] * (n+1) for _ in range(n+1)]
     for i in range(1, n+1):
         for j in range(1, n+1):
