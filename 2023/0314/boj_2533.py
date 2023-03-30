@@ -1,6 +1,7 @@
 from collections import deque
 
 N = int(input())
+# 인접행렬
 adj = [[] for _ in range(N+1)]
 for _ in range(N-1):
     start, end = map(int, input().split())
