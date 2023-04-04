@@ -6,6 +6,7 @@ def solution(sticker):
         return sticker[0]
     dp_1 = [[0, 0, 0] for _ in range(n-1)]
     dp_2 = [[0, 0, 0] for _ in range(n)]
+    # 첫 인덱스를 골랐는지 고르지 않았는지에 따라 답이 다를 수 있다.
     dp_1[0] = [sticker[0], 0, 0]
     dp_2[1] = [sticker[1], 0, 0]
 
