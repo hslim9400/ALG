@@ -25,7 +25,7 @@ def solution(word, pages):
             letter = page[k]
             current = []
             d = 0
-            if letter == '<':
+            if letter == '<':  # 태그하나 모으기
                 while page[k+d] != '>':
                     visited[k+d] = 1
                     current.append(page[k+d])
