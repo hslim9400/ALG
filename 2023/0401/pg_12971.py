@@ -2,7 +2,7 @@ def solution(sticker):
     answer = 0
 
     n = len(sticker)
-    if n == 1:
+    if n == 1:  # 1일 수 있음
         return sticker[0]
     dp_1 = [[0, 0, 0] for _ in range(n-1)]
     dp_2 = [[0, 0, 0] for _ in range(n)]
