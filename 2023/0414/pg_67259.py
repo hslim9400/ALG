@@ -26,6 +26,7 @@ def solution(board):
                 else:
                     new_cost = cost + 100
                 if dp[r+dr[d]][c+dc[d]] >= new_cost - 400 or not dp[r+dr[d]][c+dc[d]]:
+                    # 이론상 500부터 시간초과..
                     stack.append([r+dr[d], c+dc[d], d, new_cost, new_log])
     answer = dp[-1][-1]
     return answer
