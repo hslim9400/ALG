@@ -4,7 +4,7 @@ answer = 0
 num_list = [0] * 2*n
 target = y-x-1
 num_list[x-1] = num_list[y-1] = target
-
+# 안녕하세요
 def place_number(current):
   global answer, num_list
   
