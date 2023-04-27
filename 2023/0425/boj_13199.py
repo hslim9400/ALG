@@ -3,6 +3,7 @@ T = int(input())
 
 for _ in range(T):
   P, M, F, C = map(int, sys.stdin.readline().split())
+  # input으로 받으면 시간초과
   
   init_coupons = C * (M // P)
   chicken_1 = init_coupons // F
