@@ -10,14 +10,6 @@ def find_enemy(x):
   enemies[x] = find_friend(enemies[x])
   return enemies[x]
   
-def is_enemy(x, y):
-  x_enemy = find_enemy(x)
-  y_enemy = find_enemy(y)
-  
-  if x_enemy and y_enemy and x_enemy == y_enemy:
-    return False
-  return True
-
 def union_friend(x, y):
   x = find_friend(x)
   y = find_friend(y)
@@ -33,25 +25,20 @@ def union_enemy(x, y):
   
   
 N, M = map(int, input().split())
-print(N, M)
 enemies = [0] * (N+1)
 friends = list(range(N+1))
 answer = 1
 
 for _ in range(M):
   one, other = map(int, input().split())
-  print(one, other)
   if not answer:
     continue
-  union_enemy(one, other)
-  print("enemies : ", enemies)
-  if not is_enemy(one, other):
+  if find_friend(one) == find_friend(other):
     answer = 0
-  
-  union_friend(one, find_enemy(other))
-  union_friend(other, find_enemy(one))
-  print("friends ", friends)
-  print()
-  
+  if enemies[other]:
+    union_friend(one, find_enemy(other))
+  if enemies[one]:
+    union_friend(other, find_enemy(one))
+  union_enemy(one, other)
   
 print(answer)
