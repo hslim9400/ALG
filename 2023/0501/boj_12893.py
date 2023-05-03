@@ -25,6 +25,7 @@ def union_enemy(x, y):
   
   
 N, M = map(int, input().split())
+# 친구, 적 두 개의 배열로 적의 적은 친구다를 판단
 enemies = [0] * (N+1)
 friends = list(range(N+1))
 answer = 1
