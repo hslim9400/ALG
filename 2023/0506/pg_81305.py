@@ -19,8 +19,12 @@ def solution(k, num, links):
     left = 0
     right = 10000 * N
 
-    def is_possible(L):
+    def is_possible(L):  
+        # 한 그룹의 인원이 최대 L명까지 가능한지 확인
+
         dp = [[0, 0] for _ in range(N)]
+        # dp에는 현재 노드 아래의 트리가 몇 개의 그룹으로 이루어져있는지 쌓는다.
+        # 또한 현재 노드가 포함된 그룹의 인원수를 기록하여 위로 올린다. 
         stack = []
         for leaf in leaves:
             stack.append(leaf)
@@ -67,13 +71,15 @@ def solution(k, num, links):
                     break
             else:
                 stack.append(parents[current])
-
+                
+    prev = 0
     mid = 0
     flag = False
-    while left < right:
+    while left <= right:
         prev = mid
-        mid = (right + left) // 2
-        print(left, mid, right)
+        mid = (right+left)//2
+        if mid == prev:
+            flag = True
         if is_possible(mid):
             right = mid
             if flag:
@@ -83,4 +89,3 @@ def solution(k, num, links):
 
     return mid
 
-solution(3, [12, 30, 1, 8, 8, 6, 20, 7, 5, 10, 4, 1], [[-1, -1], [-1, -1], [-1, -1], [-1, -1], [8, 5], [2, 10], [3, 0], [6, 1], [11, -1], [7, 4], [-1, -1], [-1, -1]])
