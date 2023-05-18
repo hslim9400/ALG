@@ -11,6 +11,7 @@ for i in range(R):
             board_line.append(0)
     board.append(board_line)
 
+# 처음 1초는 아무것도 안하니 시간을 1로
 current = 1
 dr = [0, 1, 0, -1]
 dc = [1, 0, -1, 0]
