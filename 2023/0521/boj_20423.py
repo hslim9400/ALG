@@ -96,7 +96,7 @@ for i in range(len(target)-1, -1, -1):
     break
   latter.append(symmetries[letter])
 
-
+# 문자를 앞 뒤로 추가하며 퀼린드롬이 되는지 확인
 if answer:
   print(answer)
 else:
