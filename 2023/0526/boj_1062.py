@@ -32,6 +32,7 @@ else:
         print(N)
     else:
         for i in range(1 << len(alp)):
+            # 부분집합 중 원소가 K개인 부분집합
             counts = 0
             for j in range(len(alp)):
                 if i & (1 << j):
