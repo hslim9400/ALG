@@ -1,4 +1,4 @@
-def change_tree(idx, num):
+def update_tree(idx, num):
   tree_idx = idx + k
   existing = segment_tree[tree_idx]
   segment_tree[tree_idx] = num
@@ -41,12 +41,12 @@ for i in range(k, k*2):
 
 for i in range(N):
   num = int(input())
-  change_tree(i, num)
+  update_tree(i, num)
 
 
 for _ in range(M+K):
   a, b, c = map(int, input().split())
   if a == 1:
-    change_tree(b-1, c)
+    update_tree(b-1, c)
   else:
     print(range_sum(1, b-1, c-1))
