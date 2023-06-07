@@ -23,7 +23,7 @@ def determine(target):
 
 prev = left
 answer = 0
-while left <= right:
+while left <= right:  # 종료 조건 주의
     mid = (right + left) // 2
     if mid == prev:
         break
