@@ -1,6 +1,6 @@
 dr = [0, 1, 0, -1]
 dc = [1, 0, -1, 0]
-
+# 사용하는 자료구조가 많음
 def solution(board):
     N = len(board)
     answer = 0
