@@ -5,6 +5,7 @@ head = (0, 1)
 dc = [1, -1]
 
 queue = deque([])
+# 홀, 짝일경우를 구분했지만 안그래도 괜찮을 듯
 
 def next_line(line_type, num, d):
     if d == 1:
