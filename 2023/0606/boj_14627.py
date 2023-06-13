@@ -13,7 +13,7 @@ for _ in range(S):
     right = max(right, length)
 
 
-def determine(target):
+def determine(target):  # 만들 수 있는 치킨을 판별
 
     chickens = 0
     for spring_onion in spring_onions:
