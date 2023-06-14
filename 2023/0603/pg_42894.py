@@ -10,7 +10,7 @@ def solution(board):
     cols_dict = {}
     fail_blocks = set()
     
-    def get_block(block, start):
+    def get_block(block, start):  # 위치를 확인해 내 자료구조를 채움
         nonlocal removed_cols, visited
         stack = [start]
         r1 = c1  = N
