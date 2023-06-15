@@ -13,7 +13,7 @@ for i in range(m):
     if n == s:
         print(i+1)
 
-while n > s:
+while n > s:  # 다음 이벤트가 힙에서 나옴
     current, member = heapq.heappop(heap)
     n -= 1
     if n == s:
