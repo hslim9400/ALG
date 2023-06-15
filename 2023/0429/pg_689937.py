@@ -5,6 +5,8 @@ def solution(n, edges):
         start, end = edge
         adj[start].append(end)
         adj[end].append(start)
+
+    # dfs를 세번 돌 것
     
     stack = [(1, 0)]
     visited = set()
