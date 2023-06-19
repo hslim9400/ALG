@@ -4,7 +4,7 @@ for test_case in range(1, T+1):
     M = int(input())
     A = []
     B = []
-    for i in range(M):
+    for i in range(M):  # A와 B에 넣기
         Ai, Bi = map(int, input().split())
         A.append(Ai)
         B.append(Bi)

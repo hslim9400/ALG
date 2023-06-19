@@ -63,12 +63,10 @@ symmetries = {
   '9': False
 }
 def get_letter(letter):
-  if symmetries[letter]:
-    return letter
-  if symmetries[letter.upper()]:
-    return letter.upper()
   if symmetries[letter.lower()]:
     return letter.lower()
+  if symmetries[letter.upper()]:
+    return letter.upper()
   return False
 
 def check_qalindrome(arr):
