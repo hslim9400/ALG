@@ -4,6 +4,7 @@ target = list(map(int, input().split()))
 
 answer = 0
 for permutation in permutations(target):
+    # 순열
     current = 0
     nums = set()
     counts = 0
