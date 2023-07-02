@@ -9,7 +9,7 @@ while multiplier <= N:
 current = N
 answer = 1
 while True:
-    modulo = current % K
+    modulo = current % K  # 나머지로만 계산해야 시간안에 돌아감
 
     if not modulo:
         break
