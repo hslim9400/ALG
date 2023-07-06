@@ -1,7 +1,7 @@
 def solution(board, skill):
     N, M = len(board), len(board[0])
     answer = 0
-    prefix = [[0] * (M + 2) for _ in range(N + 2)]
+    prefix = [[0] * (M + 2) for _ in range(N + 2)]  # 패딩
     diff = [[0] * M for _ in range(N)]
     for current in skill:
         t, r1, c1, r2, c2, d = current
