@@ -15,6 +15,6 @@ def solution(user_id, banned_id):
             else:
                 break
         else:
-            answer.add(tuple(sorted(permutation)))
+            answer.add(tuple(sorted(permutation)))  # 중복이 안되도록 정렬하여 튜플로 만들기
             
     return len(answer)
