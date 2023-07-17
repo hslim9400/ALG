@@ -5,7 +5,7 @@ for _ in range(N):
 
 dp = [[0]*(1<<N) for _ in range(N)]
 
-def tsp(current, visited):
+def tsp(current, visited):  # 탑다운 dp
 
     if visited == (1<<N)-1:
         if board[current][0]:
