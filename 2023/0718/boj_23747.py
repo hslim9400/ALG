@@ -17,7 +17,7 @@ def dfs(start, target):
     local_visited = set()
     while stack:
         r, c = stack.pop()
-        if visited[r][c]:
+        if visited[r][c]:  # 이미 와드 시야가 있음
             return
         if (r, c) in local_visited:
             continue
