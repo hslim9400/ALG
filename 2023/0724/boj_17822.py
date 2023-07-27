@@ -87,7 +87,7 @@ for command in commands:
     while s < N:
         board[s] = rotate(board[s], d, k)
         s += x
-    if not erase():
+    if not erase():  # 성공여부를 return받음
         flatten()
 
 answer = 0
