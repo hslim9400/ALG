@@ -3,7 +3,7 @@ T = int(input())
 
 def check_palindrome(target, left, right):
 
-    while left < right:
+    while left < right:  # 회문 확인
 
         if target[left] != target[right]:
             return(False, (left, right))
