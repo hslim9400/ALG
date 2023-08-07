@@ -39,6 +39,7 @@ for _ in range(T):
             if board[i][j] == '$':
                 targets.append((i, j))
 
+    # 세 곳으로부터의 거리의 합이 최소가 되는 곳을 찾을 것
     view_1 = bfs([0, 0])
     view_2 = bfs([targets[0][0], targets[0][1]])
     view_3 = bfs([targets[1][0], targets[1][1]])
