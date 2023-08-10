@@ -18,15 +18,14 @@ for i in range(N):
     for j in range(13):
         for k in range(4):
             if i+k <= N:
-                dp[i+k][j+1] = dp[i][j] * combination(4, k)
+                dp[i+k][j+1] += dp[i][j] * combination(4, k)
 
-current = 1
+fours = 1
 answer = 0
-
-while current*4 <= N:
-    counts = combination(13, current)
-    answer += counts * dp[N - 4*current][13-current]
+while fours*4 <= N:
+    counts = combination(13, fours)
+    answer += counts * dp[N - 4*fours][13-fours]
     answer %= 10007
-    current += 1
+    fours += 1
 
 print(answer%10007)
