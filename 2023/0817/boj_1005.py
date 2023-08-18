@@ -6,4 +6,5 @@ for _ in range(T):
     for i in range(K):
         X, Y = map(int, input().split())
     target = int(input())
+    print(target)
     
