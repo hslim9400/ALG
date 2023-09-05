@@ -26,6 +26,7 @@ def bfs(start, idx):
                 queue.append([nr, nc, dist+1])
 
 for idx in [0, 1, 2]:
+    # 각각 bfs
     bfs(list(map(int, input().split())), idx)
 
 answer = -1
