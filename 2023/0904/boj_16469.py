@@ -33,6 +33,7 @@ counts = 0
 for r in range(R):
     for c in range(C):
         if -1 not in result[r][c]:
+            # 조건
             if max(result[r][c]) < answer:
                 answer = max(result[r][c])
                 counts = 1
