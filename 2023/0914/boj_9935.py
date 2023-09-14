@@ -1,0 +1,3 @@
+origin = input()
+target = input()
+
