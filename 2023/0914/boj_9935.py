@@ -1,4 +1,16 @@
-origin = input()
-target = input()
+origin = list(input())
+target = list(input())
 
-answer = 0
+stack = []
+
+for i in origin:
+    stack.append(i)
+
+    if stack[-len(target):] == target:
+        for _ in range(len(target)):
+            stack.pop()
+    
+if stack:
+    print(''.join(stack))
+else:
+    print('FRULA')
