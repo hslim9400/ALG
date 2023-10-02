@@ -15,4 +15,5 @@ for i in range(1, N+1):
         for k in range(2, i+1):
             dp[i][j] = max(dp[i][j], dp[k-2][j-1]+prefix_sum[i]-prefix_sum[k-1])
 
+
 print(dp[N][M])
