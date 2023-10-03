@@ -1,3 +1,3 @@
 N = int(input())
-answer = 0
+answer = []
 print(answer)
