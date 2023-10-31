@@ -7,7 +7,7 @@ for i in range(10):
         else:
             line[j] = False
     board.append(line)
-
+# .
 dx = [-1, 1, 0, 0, 0]
 dy = [0, 0, 0, -1, 1]
 
