@@ -1,3 +1,3 @@
 def solution(board, r, c):
-    answer = 0
+    answer = 1
     return answer
