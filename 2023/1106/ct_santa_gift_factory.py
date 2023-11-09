@@ -1,1 +1,2 @@
 q = int(input())
+print()
