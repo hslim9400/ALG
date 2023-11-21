@@ -30,6 +30,7 @@ def get_num(tree, left, right, start, end, node):
             * get_num(tree, middle + 1, right, start, end, node * 2 + 1) 
             % 1000000007)
 
+# 입력
 n, m, k = map(int, input().split())
 nums = [0] + [int(input()) for _ in range(n)]
 tree = [0] * (n * 4)
