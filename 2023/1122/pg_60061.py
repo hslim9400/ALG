@@ -1,3 +1,3 @@
 def solution(n, build_frame):
-    answer = [[]]
+    answer = [[1]]
     return answer
